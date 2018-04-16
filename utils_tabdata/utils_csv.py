@@ -1,14 +1,52 @@
 # -*- coding: UTF-8 -*-
 from csv import DictWriter, DictReader
-from itertools import chain
+from itertools import chain, filterfalse
 
 
 class UtilsCSV:
 
     @staticmethod
-    def __add_if_not_present(lst, element):
-        if element not in lst:
-            lst.append(element)
+    def __dict_to_tuple(d):
+        # freezes dict (can be hashed).
+        # precondition: values of the dictionary are themselves immutable (e.g. strings).
+        if isinstance(d, dict):
+            return tuple((k, d[k]) for k in sorted(d.keys()))
+        else:
+            raise TypeError("Expected argument of type dict. Received {}.".format(type(d)))
+
+    @staticmethod
+    def __tuple_to_dict(t):
+        if isinstance(t, tuple):
+            return {x: y for x, y in t}
+        else:
+            raise TypeError("Expected argument of type tuple. Received {}.".format(type(t)))
+
+    @staticmethod
+    # returns ((k0, v0), (k1, v1), .. (kn, vn))
+    def __dict_list_to_tuple_of_tuples(dl):
+        if isinstance(dl, list):
+            return tuple(UtilsCSV.__dict_to_tuple(d) for d in dl)
+        else:
+            raise TypeError("Expected argument of type list. Received {}.".format(type(dl)))
+
+    @staticmethod
+    def __unique_everseen(iterable, key=None):
+        # List unique elements, preserving order. Remember all elements ever seen.
+        # unique_everseen('AAAABBBCCDAABBB') --> A B C D
+        # unique_everseen('ABBCcAD', str.lower) --> A B C D
+        # https://docs.python.org/3.6/library/itertools.html#itertools-recipes
+        seen = set()
+        seen_add = seen.add
+        if key is None:
+            for element in filterfalse(seen.__contains__, iterable):
+                seen_add(element)
+                yield element
+        else:
+            for element in iterable:
+                k = key(element)
+                if k not in seen:
+                    seen_add(k)
+                    yield element
 
     @staticmethod
     def __add_if_pattern_not_present(lst, element, pattern, patternset):
@@ -26,13 +64,13 @@ class UtilsCSV:
             raise TypeError("No column/key names specified.")
         res = []
         if all_columns:
-            for row in row_dict_list:
-                UtilsCSV.__add_if_not_present(res, row)
+            gen = UtilsCSV().__unique_everseen(UtilsCSV().__dict_list_to_tuple_of_tuples(row_dict_list))
+            res = [UtilsCSV().__tuple_to_dict(x) for x in gen]
         else:
             cmpl = set()
             for row in row_dict_list:
                 cmp = tuple(row[col_name] for col_name in column_name)
-                UtilsCSV.__add_if_pattern_not_present(res, row, cmp, cmpl)
+                UtilsCSV().__add_if_pattern_not_present(res, row, cmp, cmpl)
         return res
 
     @staticmethod
