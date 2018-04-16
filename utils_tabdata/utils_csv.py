@@ -48,7 +48,7 @@ class UtilsCSV:
     def blank_fields(*str_fields):
         # returns True if the concatenation of received strings has 0 characters or only has space characters.
         if (not map(lambda str_field: isinstance(str_field, str), str_fields)) or (len(str_fields).__eq__(0)):
-            raise TypeError("No arguments provided or at least one of them is not of type str.")
+            raise TypeError("No arguments received.")
         res = ''
         for field in str_fields:
             res += field
