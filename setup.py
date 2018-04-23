@@ -17,8 +17,12 @@ setup(name='utils_tabdata',
       author_email='psljp@protonmail.com',
       license='GPL-3',
       packages=find_packages(),
-      install_requires=['pandas>=0.22.0', 'xlsxwriter>=1.0.2'],
+      install_requires=['pandas==0.22.0', 'xlsxwriter==1.0.2', 'click==6.7'],
       test_suite='nose.collector',
-      tests_require=['nose>=1.3.7'],
+      tests_require=['nose'],
+      entry_points='''
+                   [console_scripts]
+                   utils_tabdata=utils_tabdata.scripts:cli
+                   ''',
       include_package_data=True,
       zip_safe=False)
