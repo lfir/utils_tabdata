@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from collections import OrderedDict
 from csv import DictWriter, DictReader
 from itertools import chain, filterfalse
