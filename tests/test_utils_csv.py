@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from csv import reader
 from os import remove
 from utils_tabdata.utils_csv import UtilsCSV

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from click.testing import CliRunner
 from os import remove
 from utils_tabdata import utils_csv, scripts
