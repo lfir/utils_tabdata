@@ -58,4 +58,16 @@ Precondition: all CSVs and all rows have the same columns.
 
 **UtilsPDA**
 
-import utils_tabdata.UtilsPDA
+    import utils_tabdata.UtilsPDA
+    
+**Public interface**
+
+- dframes_to_excel_sheets(data_frames, sheet_names, file_name)
+        
+Creates an excel file with the contents of a data frame per sheet.
+
+Precondition: data_frames (list of Pandas Data Frames) and sheet_names (list of strings) have the same number of elements.
+
+**Terminal Commands**
+
+On the command line **'utils_tabdata --help'** can be used to see the available terminal commands.
