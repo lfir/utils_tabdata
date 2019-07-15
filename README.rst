@@ -52,7 +52,7 @@ Returns True if the concatenation of received strings has 0 characters or only h
 
 - merge_csvs(destnm, *csv_path, column_lst=None, encoding='utf-8', delimiter=',')
 
-Combines the specified CSV files into the file path ved as first argument. Parameter column_lst determines column order in the output file.
+Combines the specified CSV files into the file path received as first argument. Parameter column_lst determines column order in the output file.
 
 Precondition: all CSVs and all rows have the same columns.
 
