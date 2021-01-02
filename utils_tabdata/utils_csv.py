@@ -66,13 +66,13 @@ class UtilsCSV:
 
         res = []
         if all_columns:
-            gen = UtilsCSV().__unique_everseen(UtilsCSV().__dict_list_to_tuple_of_tuples(row_dict_list))
-            res = [UtilsCSV().__tuple_to_dict(x) for x in gen]
+            gen = UtilsCSV.__unique_everseen(UtilsCSV.__dict_list_to_tuple_of_tuples(row_dict_list))
+            res = [UtilsCSV.__tuple_to_dict(x) for x in gen]
         else:
             cmpl = set()
             for row in row_dict_list:
                 cmp = tuple(row[col_name] for col_name in column_name)
-                UtilsCSV().__add_if_pattern_not_present(res, row, cmp, cmpl)
+                UtilsCSV.__add_if_pattern_not_present(res, row, cmp, cmpl)
 
         return res
 
@@ -141,6 +141,6 @@ class UtilsCSV:
         
         rec = []
         for fcsv in csv_path:
-            rec.append(UtilsCSV().csv_to_dict_list(fcsv, encoding=encoding, delimiter=delimiter))
+            rec.append(UtilsCSV.csv_to_dict_list(fcsv, encoding=encoding, delimiter=delimiter))
         flattened = list(chain.from_iterable(rec))
-        UtilsCSV().dicts_to_csv(flattened, destnm, column_lst, encoding=encoding, delimiter=delimiter)
+        UtilsCSV.dicts_to_csv(flattened, destnm, column_lst, encoding=encoding, delimiter=delimiter)
