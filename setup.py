@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 
 def readme():
@@ -8,7 +8,7 @@ def readme():
 
 
 setup(name='utils_tabdata',
-      version='0.1',
+      version='0.2',
       description='Module with tools to organize and work with tabular data (from CSV files or Pandas Data Frames).',
       long_description=readme(),
       url='https://github.com/Asta1986/utils_tabdata',
@@ -16,7 +16,7 @@ setup(name='utils_tabdata',
       author_email='psljp@protonmail.com',
       license='GPL-3',
       packages=find_packages(),
-      install_requires=['pandas==0.22.0', 'xlsxwriter==1.0.2', 'click==6.7'],
+      install_requires=['click==7.1.2', 'matplotlib==3.3.3', 'pandas==1.2.0', 'xlrd==1.2.0', 'xlsxwriter==1.3.7'],
       test_suite='nose.collector',
       tests_require=['nose'],
       entry_points='''

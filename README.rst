@@ -11,7 +11,7 @@ git clone https://github.com/Asta1986/utils_tabdata
 
 cd utils_tabdata
 
-pip3.6 install .
+pip3.9 install .
 
 **To uninstall it:** pip uninstall utils_tabdata
 

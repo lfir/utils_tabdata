@@ -5,8 +5,8 @@ class UtilsPDA:
 
     @staticmethod
     def dframes_to_excel_sheets(data_frames, sheet_names, file_name):
-        # precondition: [data_frames].len() = [sheet_names].len()
-        # creates an excel file with the contents of a data frame per sheet
+        # Creates an excel file with the contents of a data frame per sheet.
+        # Precondition: len([data_frames]) == len([sheet_names]).
         try:
             with ExcelWriter(file_name + '.xlsx') as writer:
                 ct = 0

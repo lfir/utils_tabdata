@@ -8,3 +8,11 @@
 /*.egg-info
 
 *.csv
+
+.eggs
+.idea
+htmlcov
+ts.py
+.coverage
+.venv
+settings.json
