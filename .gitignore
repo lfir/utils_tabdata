@@ -15,4 +15,6 @@ htmlcov
 ts.py
 .coverage
 .venv
-settings.json
+.vscode
+.pytest_cache
+__pycache__
