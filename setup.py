@@ -16,7 +16,7 @@ setup(name='utils_tabdata',
       author_email='psljp@protonmail.com',
       license='GPL-3',
       packages=find_packages(),
-      install_requires=['click==7.1.2', 'matplotlib==3.3.3', 'pandas==1.2.0', 'xlrd==1.2.0', 'xlsxwriter==1.3.7'],
+      install_requires=['click==7.1.2', 'matplotlib==3.3.3', 'pandas==1.2.1', 'xlrd==1.2.0', 'xlsxwriter==1.3.7'],
       test_suite='nose.collector',
       tests_require=['nose'],
       entry_points='''
