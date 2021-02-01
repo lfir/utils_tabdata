@@ -59,8 +59,9 @@ class UtilsCSV:
 
     @staticmethod
     def unique_rows(row_dict_list, *column_name, all_columns=False):
-        # Returns a list with the unique dicts (rows) of the received list of dictionaries.
-        # Comparisons can be made using all or some of the keys (columns).
+        """Returns a list with the unique dicts (rows) of the received list of dictionaries.
+        Comparisons can be made using all or some of the dict keys (which map the CSV column names).
+        """
         if len(column_name) == 0 and not all_columns:
             raise TypeError('No column/key names specified.')
 
@@ -78,7 +79,10 @@ class UtilsCSV:
 
     @staticmethod
     def sort_by_int_in_str(row_dict_list, column_name, reverse=False):
-        # Precondition: values of column_name are ints or ints in strings.
+        """Returns the list of dicts (rows) received as argument sorted by the column
+        received as second argument, which can have numbers or numbers in a string as values.
+        Precondition: values of column_name are ints or ints in strings (i. e. 3 or "3" but not "a3j").
+        """
         res = []
         for row in row_dict_list:
             res.append((int(row[column_name]), row))
@@ -89,7 +93,9 @@ class UtilsCSV:
 
     @staticmethod
     def blank_fields(*str_fields):
-        # Returns True if the concatenation of received strings has 0 characters or only has space characters.
+        """Returns True if the concatenation of received strings has 0 characters
+        or only has space characters.
+        """
         if (not map(lambda str_field: isinstance(str_field, str), str_fields)) or (len(str_fields) == 0):
             raise TypeError('No valid (type str) arguments received.')
 
@@ -101,7 +107,9 @@ class UtilsCSV:
 
     @staticmethod
     def csv_to_dict_list(str_csv_file_nm, encoding='utf-8', delimiter=','):
-        # Returns a list of dictionaries with column names as keys, one for each row in the file.
+        """Returns a list of dictionaries with column names as keys,
+        one for each row in the file.
+        """
         dict_list = []
         try:
             with open(str_csv_file_nm, encoding=encoding) as fh:
@@ -114,8 +122,11 @@ class UtilsCSV:
 
     @staticmethod
     def dicts_to_csv(row_dict_list, destnm, column_lst=None, encoding='utf-8', delimiter=','):
-        # Precondition: all rows have the same columns.
-        # column_lst determines column order in the output file.
+        """Writes the list of dictionaries received as first argument to the
+        file path received as second argument.
+        Parameter column_lst determines column order in the output file.
+        Precondition: all rows have the same columns.
+        """
         destf = destnm + '.csv'
 
         try:
@@ -134,8 +145,10 @@ class UtilsCSV:
 
     @staticmethod
     def merge_csvs(destnm, *csv_path, column_lst=None, encoding='utf-8', delimiter=','):
-        # Precondition: all CSVs and all rows have the same columns.
-        # column_lst determines column order in the output file.
+        """Combines the specified CSV files into the file path received as first argument.
+        Parameter column_lst determines column order in the output file.
+        Precondition: all CSVs and all rows have the same columns.
+        """
         if len(csv_path) < 2:
             raise TypeError('Less than two file paths received as arguments.')
         

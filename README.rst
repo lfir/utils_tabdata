@@ -20,63 +20,53 @@ Classes.
 ***************
 **UtilsChart**
 
-    import utils_tabdata.UtilsChart
+    from utils_tabdata import UtilsChart
     
 **Public interface**
 
-- plot_timecomplexity(inputsizes, datadict, title='')
+- plot_timecomplexity_
 
-Displays a line chart with input size values on the X-axis and execution time values on the Y-axis.
+.. _plot_timecomplexity: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_chart.py#L8
 
 **UtilsCSV**
 
-    import utils_tabdata.UtilsCSV
+    from utils_tabdata import UtilsCSV
     
 **Public interface**
 
-- csv_to_dict_list(str_csv_file_nm, encoding='utf-8', delimiter=',')
+- csv_to_dict_list_
 
-Reads the CSV file received as first argument and returns a list of dictionaries with column names as keys, one for each row in the file.
+.. _csv_to_dict_list: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_csv.py#L110
 
-- dicts_to_csv(row_dict_list, destnm, column_lst=None, encoding='utf-8', delimiter=',')
+- dicts_to_csv_
 
-Writes the list of dictionaries received as first argument to the file path received as second argument.
+.. _dicts_to_csv: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_csv.py#L125
 
-Parameter column_lst (list of strings of column names) determines column order in the output file.
+- unique_rows_
 
-Precondition: all rows have the same columns.
+.. _unique_rows: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_csv.py#L62
 
-- unique_rows(row_dict_list, \*column_name, all_columns=False)
+- sort_by_int_in_str_
 
-Returns a list with the unique dicts (rows) of the received list of dictionaries.
+.. _sort_by_int_in_str: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_csv.py#L82
 
-Comparisons can be made using all or some of the dict keys (which map the CSV column names).
+- blank_fields_
 
-- sort_by_int_in_str(row_dict_list, column_name, reverse=False)
+.. _blank_fields: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_csv.py#L96
 
-Returns the list of dicts (rows) received as argument sorted by the column received as second argument which can have numbers or numbers in a string as values (i. e. 3 or "3" but not "a3j").
+- merge_csvs_
 
-- blank_fields(\*str_fields)
-
-Returns True if the concatenation of received strings has 0 characters or only has space characters.
-
-- merge_csvs(destnm, \*csv_path, column_lst=None, encoding='utf-8', delimiter=',')
-
-Combines the specified CSV files into the file path received as first argument. Parameter column_lst determines column order in the output file.
-
-Precondition: all CSVs and all rows have the same columns.
+.. _merge_csvs: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_csv.py#L148
 
 **UtilsPDA**
 
-    import utils_tabdata.UtilsPDA
+    from utils_tabdata import UtilsPDA
     
 **Public interface**
 
-- dframes_to_excel_sheets(data_frames, sheet_names, file_name)
-        
-Creates an excel file with the contents of a data frame per sheet.
+- dframes_to_excel_sheets_
 
-Precondition: data_frames (list of Pandas Data Frames) and sheet_names (list of strings) have the same length.
+.. _dframes_to_excel_sheets: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_pda.py#L8
 
 *******************
 Terminal Commands.

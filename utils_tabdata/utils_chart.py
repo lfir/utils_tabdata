@@ -7,11 +7,11 @@ class UtilsChart():
     def plot_timecomplexity(inputsizes, datadict, title=''):
         """Creates and displays a line chart with input size values on the X-axis
         and execution time values on the Y-axis.
-        :param inputsizes: list Contains the X-axis labels (index in Pandas).
-        :param datadict: dict The Y-axis values. Each key represents a column and has
+        :param inputsizes: Contains the X-axis labels (index in Pandas).
+        :param datadict: The Y-axis values. Each key represents a column and has
         a list of execution times as value. More details about this data format can be found at:
         https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#from-dict-of-series-or-dicts
-        :param title: str optional The title of the chart.
+        :param title: optional The title of the chart.
         
         Example: plot_timecomplexity(
             [1000, 2000, 3000], 
