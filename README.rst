@@ -11,13 +11,23 @@ git clone https://github.com/Asta1986/utils_tabdata
 
 cd utils_tabdata
 
-pip3.9 install .
+pip install .
 
 **To uninstall it:** pip uninstall utils_tabdata
 
 ***************
 Classes.
 ***************
+**UtilsChart**
+
+    import utils_tabdata.UtilsChart
+    
+**Public interface**
+
+- plot_timecomplexity(inputsizes, datadict, title='')
+
+Displays a line chart with input size values on the X-axis and execution time values on the Y-axis.
+
 **UtilsCSV**
 
     import utils_tabdata.UtilsCSV
