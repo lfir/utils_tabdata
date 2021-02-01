@@ -1,6 +1,6 @@
 from csv import reader
 from os import remove
-from utils_tabdata.utils_csv import UtilsCSV
+from utils_tabdata import UtilsCSV
 import unittest
 
 

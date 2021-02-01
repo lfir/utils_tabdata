@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from utils_tabdata.utils_chart import UtilsChart, plt
+from utils_tabdata import UtilsChart, plt
 
 
 class TestScripts(unittest.TestCase):
