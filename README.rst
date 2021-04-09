@@ -68,6 +68,10 @@ Classes.
 
 .. _dframes_to_excel_sheets: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_pda.py#L8
 
+- print_numtable_
+
+.. _print_numtable: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_pda.py#L22
+
 *******************
 Terminal Commands.
 *******************
