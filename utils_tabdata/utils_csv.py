@@ -4,22 +4,25 @@ from itertools import chain, filterfalse
 
 
 class UtilsCSV:
-
     @staticmethod
     def __dict_to_tuple(d):
         # Freezes dict (can be hashed).
-        # Precondition: values of the dictionary are themselves immutable (e.g. strings).
+        # Precondition: values of theu dictionary are themselves immutable (e.g. strings).
         if isinstance(d, dict):
             return tuple((k, d[k]) for k in d)
         else:
-            raise TypeError('Expected argument of type dict. Received {}.'.format(type(d)))
+            raise TypeError(
+                "Expected argument of type dict. Received {}.".format(type(d))
+            )
 
     @staticmethod
     def __tuple_to_dict(t):
         if isinstance(t, tuple):
             return OrderedDict(t)
         else:
-            raise TypeError('Expected argument of type tuple. Received {}.'.format(type(t)))
+            raise TypeError(
+                "Expected argument of type tuple. Received {}.".format(type(t))
+            )
 
     @staticmethod
     def __dict_list_to_tuple_of_tuples(dl):
@@ -27,7 +30,9 @@ class UtilsCSV:
         if isinstance(dl, list):
             return tuple(UtilsCSV.__dict_to_tuple(d) for d in dl)
         else:
-            raise TypeError('Expected argument of type list. Received {}.'.format(type(dl)))
+            raise TypeError(
+                "Expected argument of type list. Received {}.".format(type(dl))
+            )
 
     @staticmethod
     def __unique_everseen(iterable, key=None):
@@ -63,11 +68,13 @@ class UtilsCSV:
         Comparisons can be made using all or some of the dict keys (which map the CSV column names).
         """
         if len(column_name) == 0 and not all_columns:
-            raise TypeError('No column/key names specified.')
+            raise TypeError("No column/key names specified.")
 
         res = []
         if all_columns:
-            gen = UtilsCSV.__unique_everseen(UtilsCSV.__dict_list_to_tuple_of_tuples(row_dict_list))
+            gen = UtilsCSV.__unique_everseen(
+                UtilsCSV.__dict_list_to_tuple_of_tuples(row_dict_list)
+            )
             res = [UtilsCSV.__tuple_to_dict(x) for x in gen]
         else:
             cmpl = set()
@@ -86,7 +93,7 @@ class UtilsCSV:
         res = []
         for row in row_dict_list:
             res.append((int(row[column_name]), row))
-        
+
         res = sorted(res, reverse=reverse)
 
         return [tupl[1] for tupl in res]
@@ -96,17 +103,19 @@ class UtilsCSV:
         """Returns True if the concatenation of received strings has 0 characters
         or only has space characters.
         """
-        if (not map(lambda str_field: isinstance(str_field, str), str_fields)) or (len(str_fields) == 0):
-            raise TypeError('No valid (type str) arguments received.')
+        if (not map(lambda str_field: isinstance(str_field, str), str_fields)) or (
+            len(str_fields) == 0
+        ):
+            raise TypeError("No valid (type str) arguments received.")
 
-        res = ''
+        res = ""
         for field in str_fields:
             res += field
-        
+
         return len(res) == 0 or res.isspace()
 
     @staticmethod
-    def csv_to_dict_list(str_csv_file_nm, encoding='utf-8', delimiter=','):
+    def csv_to_dict_list(str_csv_file_nm, encoding="utf-8", delimiter=","):
         """Returns a list of dictionaries with column names as keys,
         one for each row in the file.
         """
@@ -116,44 +125,54 @@ class UtilsCSV:
                 dr = DictReader(fh, delimiter=delimiter)
                 dict_list = [x for x in dr]
         except IOError:
-            print('File {} could not be accessed.'.format(str_csv_file_nm))
-        
+            print("File {} could not be accessed.".format(str_csv_file_nm))
+
         return dict_list
 
     @staticmethod
-    def dicts_to_csv(row_dict_list, destnm, column_lst=None, encoding='utf-8', delimiter=','):
+    def dicts_to_csv(
+        row_dict_list, destnm, column_lst=None, encoding="utf-8", delimiter=","
+    ):
         """Writes the list of dictionaries received as first argument to the
         file path received as second argument.
         Parameter column_lst determines column order in the output file.
         Precondition: all rows have the same columns.
         """
-        destf = destnm + '.csv'
+        destf = destnm + ".csv"
 
         try:
-            with open(destf, 'w', encoding=encoding) as fh:
+            with open(destf, "w", encoding=encoding) as fh:
                 if not column_lst:
                     column_lst = row_dict_list[0].keys()
                 elif len(column_lst) != len(row_dict_list[0].keys()):
-                    raise TypeError('Number of columns mismatch between received args and list dicts header.')
+                    raise TypeError(
+                        "Number of columns mismatch between received args and list dicts header."
+                    )
 
-                wr = DictWriter(fh, fieldnames=column_lst, delimiter=delimiter, lineterminator='\n')
+                wr = DictWriter(
+                    fh, fieldnames=column_lst, delimiter=delimiter, lineterminator="\n"
+                )
                 wr.writeheader()
                 for row in row_dict_list:
                     wr.writerow(row)
         except IOError:
-            print('File {} could not be created.'.format(destf))
+            print("File {} could not be created.".format(destf))
 
     @staticmethod
-    def merge_csvs(destnm, *csv_path, column_lst=None, encoding='utf-8', delimiter=','):
+    def merge_csvs(destnm, *csv_path, column_lst=None, encoding="utf-8", delimiter=","):
         """Combines the specified CSV files into the file path received as first argument.
         Parameter column_lst determines column order in the output file.
         Precondition: all CSVs and all rows have the same columns.
         """
         if len(csv_path) < 2:
-            raise TypeError('Less than two file paths received as arguments.')
-        
+            raise TypeError("Less than two file paths received as arguments.")
+
         rec = []
         for fcsv in csv_path:
-            rec.append(UtilsCSV.csv_to_dict_list(fcsv, encoding=encoding, delimiter=delimiter))
+            rec.append(
+                UtilsCSV.csv_to_dict_list(fcsv, encoding=encoding, delimiter=delimiter)
+            )
         flattened = list(chain.from_iterable(rec))
-        UtilsCSV.dicts_to_csv(flattened, destnm, column_lst, encoding=encoding, delimiter=delimiter)
+        UtilsCSV.dicts_to_csv(
+            flattened, destnm, column_lst, encoding=encoding, delimiter=delimiter
+        )
