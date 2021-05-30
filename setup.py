@@ -19,7 +19,7 @@ setup(
     packages=find_packages(),
     python_requires="~=3.9",
     install_requires=[
-        "click~=7.1",
+        "click~=8.0",
         "matplotlib~=3.3",
         "pandas~=1.2",
         "xlrd~=1.2",
