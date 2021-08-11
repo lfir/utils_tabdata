@@ -23,7 +23,7 @@ setup(
         "matplotlib~=3.3",
         "pandas~=1.2",
         "xlrd~=1.2",
-        "xlsxwriter~=1.3",
+        "xlsxwriter>=1.3,<4.0",
     ],
     test_suite="nose.collector",
     tests_require=["nose"],
