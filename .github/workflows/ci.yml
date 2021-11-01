@@ -26,6 +26,6 @@ jobs:
         pip install pytest-cov
         pip install .
     - name: Test with pytest
-      run: |
-        pytest --cov utils_tabdata/ tests/
-
+      run: pytest --cov --cov-report=xml utils_tabdata/ tests/
+    - name: Upload coverage report to Codacy  
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
