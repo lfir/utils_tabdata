@@ -7,7 +7,7 @@ utils_tabdata
 Small module with tools to organize and work with tabular data (from CSV files or Pandas Data Frames).
 
 ***************
-Installation.
+Installation
 ***************
 git clone https://github.com/Asta1986/utils_tabdata
 
@@ -18,7 +18,7 @@ pip install .
 **To uninstall it:** pip uninstall utils_tabdata
 
 ***************
-Classes.
+Classes
 ***************
 **UtilsChart**
 
@@ -75,7 +75,7 @@ Classes.
 .. _print_numtable: https://github.com/Asta1986/utils_tabdata/blob/master/utils_tabdata/utils_pda.py#L22
 
 *******************
-Terminal Commands.
+Terminal Commands
 *******************
 
 On the command line **'utils_tabdata --help'** can be used to see the available terminal commands.
