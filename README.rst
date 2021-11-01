@@ -1,6 +1,8 @@
-======================
-Module utils_tabdata.
-======================
+==============
+utils_tabdata
+==============
+
+.. image:: https://github.com/Asta1986/utils_tabdata/actions/workflows/ci.yml/badge.svg
 
 Small module with tools to organize and work with tabular data (from CSV files or Pandas Data Frames).
 
