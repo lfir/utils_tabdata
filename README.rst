@@ -2,7 +2,16 @@
 utils_tabdata
 ==============
 
-.. image:: https://github.com/Asta1986/utils_tabdata/actions/workflows/ci.yml/badge.svg
+.. list-table:: 
+
+    * - .. figure:: https://github.com/Asta1986/utils_tabdata/actions/workflows/ci.yml/badge.svg
+          :target: https://github.com/Asta1986/utils_tabdata/actions/workflows/ci.yml
+
+      - .. figure:: https://app.codacy.com/project/badge/Grade/9c4ebf6860024ff3a37dd7f441dc7a57
+          :target: https://www.codacy.com/gh/Asta1986/utils_tabdata/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Asta1986/utils_tabdata&amp;utm_campaign=Badge_Grade
+     
+      - .. figure:: https://app.codacy.com/project/badge/Coverage/9c4ebf6860024ff3a37dd7f441dc7a57
+          :target: https://www.codacy.com/gh/Asta1986/utils_tabdata/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Asta1986/utils_tabdata&amp;utm_campaign=Badge_Coverage
 
 Small module with tools to organize and work with tabular data (from CSV files or Pandas Data Frames).
 
