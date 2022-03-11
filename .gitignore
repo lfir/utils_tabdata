@@ -18,3 +18,7 @@ ts.py
 .vscode
 .pytest_cache
 __pycache__
+/.directory
+/coverage.xml
+/.mypy_cache/
+/build/
