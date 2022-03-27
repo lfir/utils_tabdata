@@ -9,7 +9,7 @@ def readme():
 
 setup(
     name="utils_tabdata",
-    version="1.0.4",
+    version="1.0.5",
     description="Module with tools to organize and work with tabular data (from CSV files or Pandas Data Frames).",
     long_description=readme(),
     url="https://github.com/Asta1986/utils_tabdata",
@@ -23,8 +23,7 @@ setup(
         "matplotlib~=3.3",
         "openpyxl~=3.0",
         "pandas~=1.2",
-        "xlrd~=1.2",
-        "xlsxwriter~=1.3",
+        "xlsxwriter~=3.0",
         "pytest"
     ],
     entry_points="""
