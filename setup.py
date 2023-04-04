@@ -22,7 +22,7 @@ setup(
         "click~=8.0",
         "matplotlib~=3.3",
         "openpyxl~=3.0",
-        "pandas~=1.2",
+        "pandas>=1.2,<3.0",
         "xlsxwriter~=3.0",
         "pytest"
     ],
